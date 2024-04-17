@@ -22,7 +22,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123
-      MONGO_INITDB_DATABASE: mongo_db
+      MONGO_INITDB_DATABASE: user_db
     volumes:
       - mongo_data:/data/db
 
