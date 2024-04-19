@@ -1,9 +1,9 @@
-const config = require('./envSettings');
+const setting = require('./envSettings');
 const mongoose = require('mongoose');
 
-const connection = async () => {
+const connectToMongoDB = async () => {
     try {
-        await mongoose.connect(`mongodb://${config.dbHost}:${config.dbPort}/${config.dbName}`);
+        await mongoose.connect(`mongodb://${setting.dbUsername}:${setting.dbPassword}@${setting.dbHost}:${setting.dbPort}/${setting.dbName}?authSource=admin`);
         console.log('Connected to MongoDB');
     }
     catch (error) {
@@ -11,4 +11,4 @@ const connection = async () => {
     }
 };
 
-module.exports = connection;
+module.exports = connectToMongoDB;
