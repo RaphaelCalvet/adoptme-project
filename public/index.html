@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form with Image</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+    <div class="container">
+        <div class="left-side">
+            <img src="https://uploads.metropoles.com/wp-content/uploads/2017/07/07152634/2017-07-07.jpg" alt="Imagem de fundo">
+        </div>
+        <div class="right-side">
+            <div class="login-container">
+                <h2>AdoptMe</h2>
+                <form id="loginForm">
+                    <div>
+                        <input placeholder="Username" type="text" id="username" name="username" required>
+                    </div>
+                    <div>
+                        <input placeholder="Password" type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="loginScript.js"></script>
 </body>
-</html>
