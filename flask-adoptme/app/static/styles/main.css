@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.animal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    object-fit: cover;
+    height: 200px;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
+    border: 2px solid #ffc107;
+}
+
+.btn-edit:hover {
+    background-color: #ffca28;
+    border-color: #ffca28;
+    color: darkgray;
+}
+
+.btn-add {
+    background-color: #28a745;
+    color: #fff;
+    border: 2px solid #28a745;
+}
+
+.btn-add:hover {
+    background-color: #218838;
+    border-color: #218838;
+    color: #fff;
+}
+
+.add-animal-btn {
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+
+.btn-delete {
+    background-color: darkred;
+    border-color: darkred;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: darkred;
+    border-color: darkred;
+    color: darkgray;
+}

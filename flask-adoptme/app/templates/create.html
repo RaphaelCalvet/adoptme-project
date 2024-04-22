@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Animal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/form.css') }}">
+</head>
+<body>
+    <div class="container-form">
+        <h1>Adicionar Novo Animal</h1>
+        <form action="{{ url_for('animal.create_animal') }}" method="POST">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Idade:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gênero:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                    <option value="other">Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="specie">Espécie:</label>
+                <input type="text" id="specie" name="specie" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descrição:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+            <a><button type="submit" class="btn">Salvar</button></a>
+        </form>
+    </div>
+</body>
+</html>

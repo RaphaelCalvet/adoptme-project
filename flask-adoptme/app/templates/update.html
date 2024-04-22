@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Animal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/form.css') }}">
+</head>
+<body>
+    <div class="container-form">
+        <h1>Editar Animal</h1>
+        <form action="{{ url_for('animal.update_animal', animal_id=animal.id) }}" method="POST">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" value="{{ animal.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Idade:</label>
+                <input type="number" id="age" name="age" value="{{ animal.age }}" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gênero:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male" {% if animal.gender == 'male' %} selected {% endif %}>Masculino</option>
+                    <option value="female" {% if animal.gender == 'female' %} selected {% endif %}>Feminino</option>
+                    <option value="other" {% if animal.gender == 'other' %} selected {% endif %}>Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="specie">Espécie:</label>
+                <input type="text" id="specie" name="specie" value="{{ animal.specie }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descrição:</label>
+                <textarea id="description" name="description" rows="4" required>{{ animal.description }}</textarea>
+            </div>
+            <button type="submit" class="btn">Salvar</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoção de Animais</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Animais Disponíveis para Adoção</h1>
+        <div class="add-animal-btn">
+            <a href="{{ url_for('animal.create_animal') }}" class="btn btn-add">Adicionar Animal</a>
+        </div>
+        <div class="animal-cards">
+            {% for animal in animals %}
+                <div class="card">
+                    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSGfpQ3m-QWiXgCBJJbrcUFdNdWAhj7rcUqjeNUC6eKcXZDAtWm" alt="animal">
+                    <div class="card-content">
+                        <h2>{{ animal.name }}</h2>
+                        <p><strong>Espécie:</strong> {{ animal.specie }}</p>
+                        <p><strong>Idade:</strong> {{ animal.age }}</p>
+                        <p><strong>Gênero:</strong> {{ animal.gender }}</p>
+                        {% if animal.description %}
+                            <p><strong>Descrição:</strong> {{ animal.description }}</p>
+                        {% endif %}
+                        <div class="actions">
+                            <form class="deleteForm">
+                                <input type="hidden" id="animal_id" name="animal_id" value="{{ animal.id }}">
+                                <button class="btn btn-delete" type="submit">Delete</button>
+                            </form>
+                            <a href="{{ url_for('animal.update_animal', animal_id=animal.id) }}"><button class="btn btn-edit">Edit</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.querySelectorAll('.deleteForm').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const animalId = this.querySelector('#animal_id').value;
+
+            fetch(`/delete/${animalId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                }
+                throw new Error('Erro ao deletar');
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
