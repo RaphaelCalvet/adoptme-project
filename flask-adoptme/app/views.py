@@ -15,7 +15,6 @@ def animals_list():
 def create_animal():
     if request.method == 'POST':
         data = request.form.to_dict()
-        print(data)
         result, status = AnimalController.create_animal(data)
         if status == 201:
             flash(f'Animal {data.get("name")} created successfully')
@@ -42,12 +41,12 @@ def update_animal(animal_id):
         flash(f'Failed {status}')
         return redirect(url_for('animal.animals_list', error=f'Failed {status}'))
 
-@animal.route('/delete/<int:animal_id>', methods=['DELETE'])
+@animal.route('/delete/<int:animal_id>', methods=['GET'])
 def delete_animal(animal_id):
     result, status = AnimalController.delete_animal(int(animal_id))
     if status == 200:
         flash(f'Animal {animal_id} deleted successfully')
-        return result, status
+        return redirect(url_for('animal.animals_list'))
     flash(f'Failed {status}')
-    return result, status
+    return redirect(url_for('animal.animals_list', error=f'Failed {status}'))
 

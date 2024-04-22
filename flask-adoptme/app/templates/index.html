@@ -24,13 +24,8 @@
                         {% if animal.description %}
                             <p><strong>Descrição:</strong> {{ animal.description }}</p>
                         {% endif %}
-                        <div class="actions">
-                            <form class="deleteForm">
-                                <input type="hidden" id="animal_id" name="animal_id" value="{{ animal.id }}">
-                                <button class="btn btn-delete" type="submit">Delete</button>
-                            </form>
-                            <a href="{{ url_for('animal.update_animal', animal_id=animal.id) }}"><button class="btn btn-edit">Edit</button></a>
-                        </div>
+                        <a href="{{ url_for('animal.delete_animal', animal_id=animal.id) }}"><button class="btn btn-delete">Delete</button></a>
+                        <a href="{{ url_for('animal.update_animal', animal_id=animal.id) }}"><button class="btn btn-edit">Edit</button></a>
                     </div>
                 </div>
             {% endfor %}
@@ -39,25 +34,3 @@
 </body>
 </html>
 
-<script>
-    document.querySelectorAll('.deleteForm').forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const animalId = this.querySelector('#animal_id').value;
-
-            fetch(`/delete/${animalId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    window.location.reload();
-                }
-                throw new Error('Erro ao deletar');
-            }).catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    });
-</script>
