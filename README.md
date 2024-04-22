@@ -16,7 +16,7 @@ Configuração
 
     bash
 
-git clone https://github.com/seu-usuario/projeto-x.git
+git clone git@github.com:RaphaelCalvet/adoptme-project.git
 
 Configurando os Bancos de Dados
 
@@ -26,7 +26,7 @@ bash
 
 cd projeto-x
 
-Execute o Docker Compose para iniciar os bancos de dados (por exemplo, MySQL e MongoDB):
+Execute o Docker Compose para iniciar os bancos de dados MongoDb e PostgreSQL:
 
 bash
 
